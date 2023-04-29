@@ -7,3 +7,14 @@ docker run -d --name ncsu  --privileged -p 127.0.0.1:9000:9000 -p 127.0.0.1:8123
 ```
 
 More details could be found on [my blog](https://findhao.net/easycoding/2584).
+
+## Build for multiple architectures
+
+```
+docker buildx create --name mybuilder
+docker buildx use mybuilder
+docker buildx inspect --bootstrap
+
+
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t findhao/ncsuvpn:latest --push .
+```
